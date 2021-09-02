@@ -1,8 +1,9 @@
 import json
 import random
-import datetime
+from datetime import datetime
 import threading
 import time
+from pytz import timezone
 import App.globalsettings as appsetting
 from paho.mqtt import client as mqtt
 from App.MongoDB_Main import Document as Doc
@@ -25,7 +26,13 @@ def eventData(data):
     col = "DeviceStatus"
     DeviceID= "Arima_01"
     ID = {"DeviceID": DeviceID }
-    timestamp = str(datetime.datetime.now())
+
+    formatTime = "%Y-%m-%d %H:%M:%S %Z%z"
+    # Current time in UTC
+    now_utc = datetime.now(timezone('UTC'))
+    # Convert to Asia/Kolkata time zone
+    now_asia = str(now_utc.astimezone(timezone('Asia/Kolkata')))
+
     data.update(ID)
     json.dumps(data, indent=4)
     deviceData = data["data"]["modbus"][0]
@@ -48,7 +55,7 @@ def eventData(data):
       "soil_temperature": random.randint(32, 35),
       "dew_point": random.randint(32, 35),
       "wind_alert": windAlert,
-      "timestamp": timestamp,
+      "timestamp": now_asia,
     }
     update = Doc().Write_Document(data=data_to_DB, col=col, DeviceID=DeviceID)
     if update == 0:
