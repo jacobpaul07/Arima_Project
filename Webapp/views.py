@@ -26,10 +26,11 @@ class ReadDeviceSettings(APIView):
 
 class startMQTT(APIView):
 
-    def post(self, request):
+    def get(self, request):
         appsetting.startMqttService = True
         start_thread()
-        return HttpResponse("Success", "application/json")
+        successjson = {"Success":"True"}
+        return HttpResponse(successjson, "application/json")
 
 
 class StopMQTT(APIView):
