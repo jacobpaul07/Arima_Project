@@ -19,7 +19,7 @@ class ReadDeviceSettings(APIView):
         appsetting.runWebSocket = True
         col = "DeviceStatus"
         DeviceID = "Arima_01"
-        data = str(Doc().Read_Document(col, DeviceID))
+        data = Doc().Read_Document(col, DeviceID)
         jsonResponse = json.dumps(data, indent=4)
         return HttpResponse(jsonResponse, "application/json")
 

@@ -26,8 +26,8 @@ class Document:
 
     def Read_Document(self, col, DeviceID):
         collection = self.db[col]
-        myquery = { 'DeviceID': DeviceID }
-        x = collection.find_one(myquery)
+        myquery = { 'DeviceID': DeviceID}
+        x = collection.find_one(myquery, {"_id":0} )
         # print(updatedCount, "documents updated.")
         return x
     
