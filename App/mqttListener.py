@@ -69,37 +69,33 @@ def eventData(data):
 
 def mqttService(subscriptiontopic, serveripaddress, serverport):
     # MQTT Connections
-    # create the client
-    maintopic = "IOTC3WSX0001"
-    subtopic_one = 'Event'
 
     if appsetting.startMqttService:
         # connection must be dynamic
-        mqttClient.connect(serveripaddress, serverport, )
+        mqttClient.connect(serveripaddress, serverport)
         # connect to client
         mqttClient.on_connect = on_connect
         mqttClient.on_message = on_message
 
         mqttClient.subscribe(subscriptiontopic)
         print("Subscribed to the topic")
-        time.sleep(3)
+
         mqttClient.loop_forever()
 
 
-def start_thread():
-
+async def start_thread():
 
     if appsetting.startMqttService:
 
         subscriptiontopic = "IOTC3WSX0001/Event"
         serveripaddress = "167.233.7.5"
         serverport = 1883
-
+        print("Mqtt About to Start")
         mqttService(subscriptiontopic, serveripaddress, serverport)
         now_utc = datetime.now(timezone('UTC'))
         # Convert to Asia/Kolkata time zone
         now_asia = str(now_utc.astimezone(timezone('Asia/Kolkata')))
-        print("ThreadStarted", now_asia)
+        print("Thread Started", now_asia )
 
     else:
         # mqttClient.disconnect()
