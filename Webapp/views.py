@@ -8,9 +8,6 @@ from rest_framework.views import APIView
 from django.http import HttpResponse
 from App.MongoDB_Main import Document as Doc
 from App.mqttListener import mqttService, start_thread
-import asyncio
-
-from App.mqtttest import AsyncMqttExample
 
 
 class ReadDeviceSettings(APIView):
@@ -31,14 +28,8 @@ class startMQTT(APIView):
 
     def get(self, request):
         appsetting.startMqttService = True
-
-        print("Thread Starting")
-        # AsyncMqttExample()
-        Thread = threading.Thread(target=start_thread)
-        Thread.start()
-        print("Theread Finished")
-
-        successjson = {"Success": "True"}
+        start_thread()
+        successjson = {"Success":"True"}
         jsonResponse = json.dumps(successjson, indent=4)
         return HttpResponse(jsonResponse, "application/json")
 
