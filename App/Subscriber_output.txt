@@ -1,0 +1,36 @@
+{ "data":{ "imei":"865860048922232","uid":1,"dtm":"20210901154406","seq":72,"sig":30,"msg":"log","modbus": [{ "sid":1,"stat":0,"len": 10,"IN_TEMP":3316,"IN_HUMI":67,"OUT_TEMP":3177,"OUT_HUMI":72,"BARO_PRE":10033,"WIND_SPD":2,"WIND_DIRT":332,"DAY_RAIN":0,"SOLR_RADI":218,"AVG_WSPD":3 }] }}
+
+{ "data":{ "imei":"865860048922232","uid":1,"dtm":"20210901154506","seq":73,"sig":30,"msg":"log","modbus": [{ "sid":1,"stat":0,"len": 10,"IN_TEMP":3316,"IN_HUMI":67,"OUT_TEMP":3177,"OUT_HUMI":73,"BARO_PRE":10033,"WIND_SPD":1,"WIND_DIRT":287,"DAY_RAIN":0,"SOLR_RADI":223,"AVG_WSPD":3 }] }}
+
+{ "data":{ "imei":"865860048922232","uid":1,"dtm":"20210901154606","seq":74,"sig":30,"msg":"log","modbus": [{ "sid":1,"stat":0,"len": 10,"IN_TEMP":3322,"IN_HUMI":67,"OUT_TEMP":3183,"OUT_HUMI":72,"BARO_PRE":10033,"WIND_SPD":1,"WIND_DIRT":258,"DAY_RAIN":0,"SOLR_RADI":279,"AVG_WSPD":3 }] }}
+
+{ "data":{ "imei":"865860048922232","uid":1,"dtm":"20210901154706","seq":75,"sig":30,"msg":"log","modbus": [{ "sid":1,"stat":0,"len": 10,"IN_TEMP":3316,"IN_HUMI":67,"OUT_TEMP":3183,"OUT_HUMI":72,"BARO_PRE":10033,"WIND_SPD":2,"WIND_DIRT":247,"DAY_RAIN":65534,"SOLR_RADI":65535,"AVG_WSPD":3 }] }}
+
+{ 
+  "temperature": "11",
+  "uvindex": "12",
+  "rainfall": "13",
+  "humidity": "14",
+  "wind_speed": "15",
+  "wind_direction": "11",
+  "soil_moisture": "12",
+  "soil_temperature": "14",
+  "dew_point": "11",
+  "wind_alert": "high",
+  "timestamp": "date.time"
+}
+
+{ 
+  "temperature": "11",
+  "uvindex": "12",
+  "rainfall": "13",
+  "humidity": "14",
+  "wind_speed": "15",
+  "wind_direction": "11",
+  "soil_moisture": "12",
+  "soil_temperature": "14",
+  "dew_point": "11",
+  "wind_alert": "high",
+  "timestamp": "date.time"
+}
+
