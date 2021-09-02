@@ -87,21 +87,20 @@ def mqttService(subscriptiontopic, serveripaddress, serverport):
 
 
 def start_thread():
-    subscriptiontopic = "IOTC3WSX0001/Event"
-    serveripaddress = "167.233.7.5"
-    serverport = 1883
+
 
     if appsetting.startMqttService:
+
+        subscriptiontopic = "IOTC3WSX0001/Event"
+        serveripaddress = "167.233.7.5"
+        serverport = 1883
+
         mqttService(subscriptiontopic, serveripaddress, serverport)
-        # thread = threading.Thread(
-        #     target=mqttService,
-        #     args=(subscriptiontopic, serveripaddress, serverport))
         now_utc = datetime.now(timezone('UTC'))
         # Convert to Asia/Kolkata time zone
         now_asia = str(now_utc.astimezone(timezone('Asia/Kolkata')))
-        print("ThreadStarted",now_asia)
-        # Starting the Thread
-        #thread.start()
+        print("ThreadStarted", now_asia)
+
     else:
         # mqttClient.disconnect()
         print("Client Disconnected")

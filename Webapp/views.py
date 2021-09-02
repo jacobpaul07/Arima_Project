@@ -28,7 +28,9 @@ class startMQTT(APIView):
 
     def get(self, request):
         appsetting.startMqttService = True
-        start_thread()
+
+        thread = threading.Thread(target=start_thread)
+        thread.start()
         successjson = {"Success": "True"}
         jsonResponse = json.dumps(successjson, indent=4)
         return HttpResponse(jsonResponse, "application/json")
