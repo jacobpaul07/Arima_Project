@@ -25,11 +25,7 @@ SECRET_KEY = 'django-insecure-=_9_&*x91yn47k5*ag4ik&xo6r_jj#n=pg7cwpmnpqs2f%mdu6
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [
-    '127.0.0.1',
-    'localhost',
-    '167.233.7.5',
-]
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -41,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'corsheaders',
     'App',
     'Webapp',
     
@@ -54,6 +51,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'API_DM.urls'
@@ -131,3 +129,22 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+CORS_ORIGIN_ALLOW_ALL = True
+# if CORS_ORIGIN_ALLOW_ALL = False uncomment the below line and add the IPs
+# CORS_ORIGIN_WHITELIST = (
+#   'http://localhost:8000',
+# )
+
+CORS_ALLOW_HEADERS = [
+    'accept',
+    'accept-encoding',
+    'authorization',
+    'content-type',
+    'dnt',
+    'origin',
+    'user-agent',
+    'x-csrftoken',
+    'x-requested-with',
+    'xauthToken'
+]
