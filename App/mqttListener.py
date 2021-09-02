@@ -8,8 +8,6 @@ import App.globalsettings as appsetting
 from paho.mqtt import client as mqtt
 from App.MongoDB_Main import Document as Doc
 
-mqttClient: mqtt = mqtt.Client()
-
 def on_connect(client, userdata, flags, rc):
     if rc == 0:
         print("Connected successfully")
@@ -65,7 +63,7 @@ def eventData(data):
     return data
 
 
-def mqttService( subscriptiontopic, serveripaddress, serverport):
+def mqttService(client: mqtt, subscriptiontopic, serveripaddress, serverport):
     # MQTT Connections
     # create the client
     maintopic = "IOTC3WSX0001"
@@ -73,31 +71,31 @@ def mqttService( subscriptiontopic, serveripaddress, serverport):
 
     if appsetting.startMqttService == True:
         # connection must be dynamic
-        mqttClient.connect(serveripaddress, serverport,)
+        client.connect(serveripaddress, serverport,)
         # connect to client
-        mqttClient.on_connect = on_connect
-        appsetting.mqttClient.on_message = on_message
+        client.on_connect = on_connect
+        client.on_message = on_message
 
-        appsetting.mqttClient.subscribe(subscriptiontopic)
+        client.subscribe(subscriptiontopic)
         print("Subscribed to the topic")
         time.sleep(3)
-        appsetting.mqttClient.loop_forever()
+        client.loop_forever()
 
 
 def start_thread():
     subscriptiontopic = "IOTC3WSX0001/Event"
     serveripaddress = "167.233.7.5"
     serverport = 1883
+    client = mqtt.Client()
 
     if appsetting.startMqttService == True:
 
         thread = threading.Thread(
             target=mqttService,
-            args=(subscriptiontopic, serveripaddress, serverport))
+            args=(client, subscriptiontopic, serveripaddress, serverport))
 
         # Starting the Thread
         thread.start()
     else:
-        # mqttClient.disconnect()
+        client.disconnect()
         print("Client Disconnected")
-
