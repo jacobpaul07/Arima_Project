@@ -92,16 +92,16 @@ def start_thread():
     serverport = 1883
 
     if appsetting.startMqttService:
-
-        thread = threading.Thread(
-            target=mqttService,
-            args=(subscriptiontopic, serveripaddress, serverport))
+        mqttService(subscriptiontopic, serveripaddress, serverport)
+        # thread = threading.Thread(
+        #     target=mqttService,
+        #     args=(subscriptiontopic, serveripaddress, serverport))
         now_utc = datetime.now(timezone('UTC'))
         # Convert to Asia/Kolkata time zone
         now_asia = str(now_utc.astimezone(timezone('Asia/Kolkata')))
         print("ThreadStarted",now_asia)
         # Starting the Thread
-        thread.start()
+        #thread.start()
     else:
         # mqttClient.disconnect()
         print("Client Disconnected")
