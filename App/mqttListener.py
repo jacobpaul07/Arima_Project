@@ -83,7 +83,7 @@ def mqttService(subscriptiontopic, serveripaddress, serverport):
         mqttClient.loop_forever()
 
 
-async def start_thread():
+def start_thread():
 
     if appsetting.startMqttService:
 
