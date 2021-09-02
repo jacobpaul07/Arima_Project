@@ -30,7 +30,8 @@ class startMQTT(APIView):
         appsetting.startMqttService = True
         start_thread()
         successjson = {"Success":"True"}
-        return HttpResponse(successjson, "application/json")
+        jsonResponse = json.dumps(successjson, indent=4)
+        return HttpResponse(jsonResponse, "application/json")
 
 
 class StopMQTT(APIView):
