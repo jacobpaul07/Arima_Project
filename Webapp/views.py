@@ -33,8 +33,9 @@ class startMQTT(APIView):
         appsetting.startMqttService = True
 
         print("Starting")
-        Thread = threading.Thread(target=AsyncMqttExample)
-        Thread.start()
+        AsyncMqttExample()
+        # Thread = threading.Thread(target=AsyncMqttExample)
+        # Thread.start()
         print("Finished")
 
         successjson = {"Success": "True"}

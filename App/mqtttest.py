@@ -28,4 +28,4 @@ class AsyncMqttExample:
         self.client.on_message = self.on_message
         self.client.on_disconnect = self.on_disconnect
         self.client.connect('167.233.7.5', 1883, 60)
-        self.client.loop_forever()
+        self.client.loop_start()
