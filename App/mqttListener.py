@@ -84,7 +84,7 @@ def mqttService(client: mqtt, subscriptiontopic, serveripaddress, serverport):
 
 def start_thread():
     subscriptiontopic = "IOTC3WSX0001/Event"
-    serveripaddress = "167.233.7.5"
+    serveripaddress = "54.160.238.163"
     serverport = 1883
     client = mqtt.Client()
 
