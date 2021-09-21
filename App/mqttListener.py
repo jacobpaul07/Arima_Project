@@ -71,12 +71,10 @@ def eventData(data):
 def mqttService(client: mqtt, subscriptiontopic, serveripaddress, serverport):
     # MQTT Connections
     # create the client
-    maintopic = "IOTC3WSX0001"
-    subtopic_one = 'Event'
 
     if appsetting.startMqttService:
         # connection must be dynamic
-        client.connect(serveripaddress, serverport, )
+        client.connect(serveripaddress, serverport)
         # connect to client
         client.on_connect = on_connect
         client.on_message = on_message
@@ -89,9 +87,9 @@ def mqttService(client: mqtt, subscriptiontopic, serveripaddress, serverport):
 
 def start_thread():
     setting = mqttSetting.read_setting()
-    subscriptiontopic = setting["subscriptiontopic"]
-    serveripaddress = setting["serveripaddress"]
-    serverport = setting["serverport"]
+    subscriptiontopic: str = setting["subscriptiontopic"]
+    serveripaddress: str = setting["serveripaddress"]
+    serverport: int = setting["serverport"]
     client = mqtt.Client()
 
     if appsetting.startMqttService:

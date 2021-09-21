@@ -24,6 +24,19 @@ class ReadDeviceSettings(APIView):
         return HttpResponse(jsonResponse, "application/json")
 
 
+class ReadAllData(APIView):
+
+    def get(self, request):
+        # jsonData = eventData("")
+        # print(jsonData)
+        # jsonResponse = json.dumps(jsonData, indent=4)
+        appsetting.runWebSocket = True
+        col = "IOT_WS_log"
+        DeviceID = "Arima_01"
+        data = Doc().DB_Read(col)
+        jsonResponse = data
+        return HttpResponse(jsonResponse, "application/json")
+
 class startMQTT(APIView):
 
     def get(self, request):

@@ -22,6 +22,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/startMQTT', views.startMQTT().as_view()),
     path('api/stopMQTT', views.StopMQTT().as_view()),
-    path('api/ReadDeviceSettings', views.ReadDeviceSettings().as_view()),
+    path('api/ReadLiveData', views.ReadDeviceSettings().as_view()),
+    path('api/ReadAllData', views.ReadAllData().as_view()),
 ]
 
