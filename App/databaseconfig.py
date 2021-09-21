@@ -19,13 +19,14 @@ class Databaseconfig:
             # config_object.read("configfile.ini")
             # dataBase = config_object["DATABASE"]
             # connectionString = dataBase["localhost"]
-            connectionString = 'localhost:27017'
+            connectionString = 'mongodb://mongoAdmin:changeMe@127.0.0.1:27017/admin'
             client = pymongo.MongoClient(connectionString)
-            # print("Connecting to MongoDB ...")
+            print("Connecting to MongoDB ...")
             client.admin.command('isMaster')
-
+            print("connected")
         except Exception as inst:
             print('Exception occurred while connecting to database', inst)
             if client is None:
                 raise Exception('Mongo db not connected')
             db = client['admin']
+
