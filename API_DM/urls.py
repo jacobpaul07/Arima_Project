@@ -18,11 +18,10 @@ from django.contrib import admin
 from django.urls import path
 from Webapp import views
 
-
-
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/startMQTT', views.startMQTT().as_view()),
     path('api/stopMQTT', views.StopMQTT().as_view()),
     path('api/ReadDeviceSettings', views.ReadDeviceSettings().as_view()),
 ]
+

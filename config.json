@@ -1,0 +1,9 @@
+{
+  "name": "Arima_Project",
+  "version": "1.0.0",
+  "settings": {
+    "subscriptiontopic" : "IOTC3WSX0001/Event",
+    "serveripaddress" : "54.160.238.163",
+    "serverport" : 1883
+  }
+}
